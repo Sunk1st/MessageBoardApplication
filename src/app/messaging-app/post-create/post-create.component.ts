@@ -13,6 +13,7 @@ export class PostCreateComponent implements OnInit {
   private mode = 'create';
   private postId: string;
   post: Post;
+  isLoading = false;
 
   constructor(public messagingAppService: MessagingAppService, public route: ActivatedRoute) {}
 
@@ -21,7 +22,11 @@ export class PostCreateComponent implements OnInit {
       if (paramMap.has('postId')) {
         this.mode = 'edit';
         this.postId = paramMap.get('postId');
-        this.post = this.messagingAppService.getPost(this.postId);
+        this.isLoading = true;
+        this.messagingAppService.getPost(this.postId).subscribe(postData => {
+          this.isLoading = false;
+          this.post = {id: postData._id, title: postData.title, content: postData.content};
+        });
       } else {
         this.mode = 'create';
         this.postId = null;
@@ -33,10 +38,11 @@ export class PostCreateComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+    this.isLoading = true;
     if (this.mode === 'create') {
       this.messagingAppService.addPost(form.value.title, form.value.content);
     } else {
-      this.messagingAppService.updatePost(this.postId, form.value.title, form.value.content)
+      this.messagingAppService.updatePost(this.postId, form.value.title, form.value.content);
     }
     form.resetForm();
   }

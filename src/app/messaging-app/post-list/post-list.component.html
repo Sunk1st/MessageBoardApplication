@@ -1,4 +1,6 @@
-<table class="table table-dark tableMargin" *ngIf="posts.length > 0">
+<div *ngIf="isLoading" class="loader"></div>
+
+<table class="table table-dark tableMargin" *ngIf="posts.length > 0 && !isLoading">
   <thead>
     <tr>
       <th scope="col">Title</th>
@@ -16,4 +18,4 @@
     </tr>
   </tbody>
 </table>
-<p class="text-center" *ngIf="posts.length <= 0">No Posts Added Yet</p>
+<p class="text-center" *ngIf="posts.length <= 0 && !isLoading">No Posts Added Yet</p>
