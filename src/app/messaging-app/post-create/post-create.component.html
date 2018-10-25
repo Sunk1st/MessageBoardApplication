@@ -1,28 +1,31 @@
 <div *ngIf="!isLoading" class="card cardMargin">
   <div class="card-body">
-    <form (submit)="onSavePost(postForm)" #postForm="ngForm">
+    <form [formGroup]="form" (submit)="onSavePost()">
       <div class="form-group has-error">
-        <input type="text"
-               class="form-control"
-               name="title"
-              [ngModel]="post?.title"
-              placeholder="Enter a Title"
-              #title="ngModel">
-        <div *ngIf="title.invalid" class="form-control-feedback">Please Enter a Post Title</div>
+        <input
+          type="text"
+          formControlName="title"
+          class="form-control"
+          placeholder="Enter a Title">
+        <div *ngIf="form.get('title').invalid" class="form-control-feedback">Please Enter a Post Title</div>
       </div>
       <div class="form-group has-error">
         <textarea
           placeholder="Enter a Post"
+          formControlName="content"
           class="form-control"
-          [ngModel]="post?.content"
-          name="content"
-          rows="6"
-          #content="ngModel">
+          rows="6">
         </textarea>
-        <div *ngIf="content.invalid" class="form-control-feedback">Please Enter a Post Content</div>
+        <div *ngIf="form.get('title').invalid" class="form-control-feedback">Please Enter a Post Content</div>
+      </div>
+      <div  class="image-preview"
+            *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+        <img
+          [src]="imagePreview"
+          [alt]="form.value.title">
       </div>
       <button (click)="filePicker.click()" class="btn btn-outline-primary btnMargin" type="button">Pick Image</button>
-      <input type="file" #filePicker>
+      <input type="file" #filePicker (change)="onImagePicked($event)">
       <button class="btn btn-primary" type='submit'>Save Post</button>
     </form>
   </div>

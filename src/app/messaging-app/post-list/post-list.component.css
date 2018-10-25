@@ -17,3 +17,9 @@
   height: 120px;
   animation: spin 2s linear infinite;
 }
+
+img {
+  width: 100px;
+  height: 100px;
+  box-shadow: 1px 1px 5px rgba(0,0,0);
+}

@@ -6,6 +6,11 @@
   margin-top: 2rem;
 }
 
+.imagePreview {
+  height: 5rem;
+  margin: 1rem 0;
+}
+
 input[type="file"] {
   visibility: hidden;
 }

@@ -5,12 +5,16 @@
     <tr>
       <th scope="col">Title</th>
       <th scope="col">Post</th>
+      <th scope="col">Image</th>
       <th>Action</th>
   </thead>
   <tbody>
     <tr *ngFor="let post of posts">
       <th>{{post.title}}</th>
       <td>{{post.content}}</td>
+      <td class="post-image">
+        <img [src]="post.imagePath" [alt]="post.title">
+      </td>
       <td>
         <a [routerLink]="['/edit', post.id]" routerLinkActive="router-link-active"  class="btn btn-primary btnMargin">Edit</a>
         <button type="button" class="btn btn-danger btnMargin" (click)="onDelete(post.id)">Delete</button>

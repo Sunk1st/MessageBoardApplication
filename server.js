@@ -21,6 +21,7 @@ mongoose.connect("mongodb+srv://Stephen:IC2FR9x60QugWZSY@cluster0-uohh3.mongodb.
 
 app.use(cors())
 app.use(bodyParser.json()) //Body Parser Middleware
+app.use("/images", express.static(path.join("backend/images")))
 app.use("/api/posts", postsRoutes);
 
 // // Serve only the static files form the dist directory
