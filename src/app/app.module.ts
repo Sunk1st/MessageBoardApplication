@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { MessagingAppComponent } from './messaging-app/messaging-app.component';
@@ -19,7 +21,7 @@ import { PostListComponent } from './messaging-app/post-list/post-list.component
     PostListComponent
   ],
   imports: [
-    BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule
+    BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule, BrowserAnimationsModule, MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

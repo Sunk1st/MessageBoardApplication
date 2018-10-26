@@ -22,4 +22,11 @@
     </tr>
   </tbody>
 </table>
+<mat-paginator
+  [length]="totalPosts"
+  [pageSize]="postsPerPage"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="onChangedPage($event)"
+  *ngIf="posts.length > 0">
+</mat-paginator>
 <p class="text-center" *ngIf="posts.length <= 0 && !isLoading">No Posts Added Yet</p>
