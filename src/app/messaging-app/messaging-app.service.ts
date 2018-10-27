@@ -21,7 +21,6 @@ export class MessagingAppService {
         'http://localhost:8080/api/posts' + queryParams
       )
       .pipe(map((postData) => {
-        console.log(postData);
         return {
           posts: postData.posts.map(post => {
             return {

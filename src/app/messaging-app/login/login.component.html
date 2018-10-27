@@ -1,0 +1,36 @@
+<div *ngIf="!isLoading" class="card cardMargin">
+  <div class="card-body">
+    <form (submit)="onLogin(loginForm)"
+          #loginForm="ngForm"
+          *ngIf="!isLoading">
+      <div class="form-group has-error">
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          #emailInput="ngModel"
+          ngModel
+          required
+          email
+          placeholder="Enter a Email Address">
+        <div
+          class="form-control-feedback"
+          *ngIf="emailInput.invalid">Please Enter a Valid Email</div>
+      </div>
+      <div class="form-group has-error">
+        <input
+          name="password"
+          ngModel
+          required
+          #passwordInput="ngModel"
+          placeholder="Enter a Password"
+          class="form-control">
+        <div class="form-control-feedback"
+             *ngIf="passwordInput.invalid">Please Enter a valid Password</div>
+      </div>
+      <button class="btn btn-primary" type='submit'>Login</button>
+    </form>
+  </div>
+</div>
+<div *ngIf="isLoading" class="loader"></div>
+

@@ -1,26 +1,9 @@
-.btnMargin {
-  margin-right: 10px;
-}
-
 .cardMargin {
   margin-top: 2rem;
 }
 
-.imagePreview {
-  height: 5rem;
-  margin: 1rem 0;
-}
-
-img {
-  height: 200px;
-  width: 200px;
-}
-
-input[type="file"] {
-  visibility: hidden;
-}
-
 .loader {
+  
   margin-left: auto;
   margin-right: auto;
   margin-top: 200px;
