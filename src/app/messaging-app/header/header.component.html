@@ -2,14 +2,17 @@
   <a class="navbar-brand" routerLink="list">Messaging Application</a>
   <div class="spacer"></div>
   <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
+    <li *ngIf="userIsAuthenticated" class="nav-item">
       <a class="nav-link" routerLink="create">New Post</a>
     </li>
-    <li class="nav-item">
+    <li *ngIf="!userIsAuthenticated" class="nav-item">
       <a class="nav-link" routerLink="/register">Register</a>
     </li>
-    <li class="nav-item">
+    <li *ngIf="!userIsAuthenticated" class="nav-item">
       <a class="nav-link" routerLink="/login">Login</a>
+    </li>
+    <li *ngIf="userIsAuthenticated" class="nav-item">
+      <div class="nav-link">Logout</div>
     </li>
   </ul>
 </nav>

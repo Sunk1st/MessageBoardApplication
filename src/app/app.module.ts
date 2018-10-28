@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material';
 
@@ -13,6 +13,7 @@ import { PostCreateComponent } from './messaging-app/post-create/post-create.com
 import { PostListComponent } from './messaging-app/post-list/post-list.component';
 import { RegisterComponent } from './messaging-app/register/register.component';
 import { LoginComponent } from './messaging-app/login/login.component';
+import { AuthInterceptor } from './messaging-app/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { LoginComponent } from './messaging-app/login/login.component';
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule, BrowserAnimationsModule, MatPaginatorModule, FormsModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

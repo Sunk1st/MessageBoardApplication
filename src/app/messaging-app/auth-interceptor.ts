@@ -4,7 +4,13 @@ import { AuthorizationService } from './authorization.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+  constructor(private authorizationService: AuthorizationService) {}
+
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    return next.handle(req);
+    const authToken = this.authorizationService.getToken();
+    const authRequest = req.clone({
+      headers: req.headers.set('Authorization', 'Bearer ' + authToken)
+    });
+    return next.handle(authRequest);
   }
 }
