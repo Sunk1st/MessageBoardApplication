@@ -39,7 +39,7 @@ export class MessagingAppService {
           posts: [...this.posts],
           postCount: transformedPostData.maxPosts
         });
-      })
+      });
   }
 
   getPost(id: string) {
